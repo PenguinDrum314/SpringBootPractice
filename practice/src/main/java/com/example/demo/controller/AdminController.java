@@ -24,10 +24,10 @@ public class AdminController {
     }
     
     @GetMapping("/admin/contacts/:id")
-    public String contactCrud(Model model) {
-        List<Contact> contactCrud = contactService.getContactCrud();
-        model.addAttribute("contactCurd", contactCrud);
-        return "contactCrud";
+    public String contactDetail(Model model) {
+        List<Contact> ContactDetail = contactService.getContactDetail();
+        model.addAttribute("contactDetail", ContactDetail);
+        return "contactDetail";
     }
 
 }

@@ -42,7 +42,7 @@ public class ContactServiceImpl implements ContactService {
     }
     
     @Override
-    public List<Contact> getContactCrud() {
+    public List<Contact> getContactDetail() {
         return contactRepository.findAll();
     }
 }
