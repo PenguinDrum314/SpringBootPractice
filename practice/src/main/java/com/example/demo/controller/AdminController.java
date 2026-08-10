@@ -22,5 +22,12 @@ public class AdminController {
         model.addAttribute("contactList", contactList);
         return "contactList";
     }
+    
+    @GetMapping("/admin/contacts/:id")
+    public String contactCrud(Model model) {
+        List<Contact> contactCrud = contactService.getContactCrud();
+        model.addAttribute("contactCurd", contactCrud);
+        return "contactCrud";
+    }
 
 }

@@ -8,5 +8,6 @@ import com.example.demo.form.ContactForm;
 public interface ContactService {
 	void saveContact(ContactForm contactForm);
 	List<Contact> getContactList();
+	List<Contact> getContactCrud();
 
 }

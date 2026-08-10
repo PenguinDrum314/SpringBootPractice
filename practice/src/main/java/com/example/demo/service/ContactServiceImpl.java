@@ -40,4 +40,9 @@ public class ContactServiceImpl implements ContactService {
     public List<Contact> getContactList() {
         return contactRepository.findAll();
     }
+    
+    @Override
+    public List<Contact> getContactCrud() {
+        return contactRepository.findAll();
+    }
 }

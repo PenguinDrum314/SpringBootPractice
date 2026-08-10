@@ -3,25 +3,31 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>お問い合わせ内容一覧</title>
+	<title>詳細画面</title>
 </head>
 
 <body>
-	<h1>お問い合わせ内容一覧</h1>
+	<h1>詳細画面</h1>
 	<table border="1">
 		<thead>
 			<tr>
 				<td>お問い合わせID</td>
 				<td>姓</td>
 				<td>名</td>
+				<td>メールアドレス</td>
+				<td>電話番号</td>
 				<td>お問い合わせ種別</td>
+				<td>郵便番号</td>
+				<td>住所</td>
+				<td>建物名</td>
+				<td>お問い合わせ内容</td>
 				<td>作成日時</td>
 				<td>更新日時</td>
 			</tr>
 		</thead>
 		<tbody>
 			<!-- th:each 同じタグを繰り返し表示するためのループ処理 -->
-			<tr th:each="contact : ${contactList}">
+			<tr th:each="contact : ${contactCrud}">
 				<td th:text="${contact.id}">お問い合わせID</td>
 				<td th:text="${contact.lastName}">姓</td>
 				<td th:text="${contact.firstName}">名</td>
@@ -40,9 +46,6 @@
 				<!-- #temporals.format: 日時データを見やすい形式(yyyy/MM/dd HH:mm)の文字列に変換して表示する -->
 				<td th:text="${#temporals.format(contact.createdAt, 'yyyy/MM/dd HH:mm')}">作成日時</td>
 				<td th:text="${#temporals.format(contact.updatedAt, 'yyyy/MM/dd HH:mm')}">更新日時</td>
-				<td>
-					<a th:href="@{/admin/contact/:id(id=${contact.id})}">詳細</a>
-				</td>
 			</tr>
 		</tbody>
 	</table>
