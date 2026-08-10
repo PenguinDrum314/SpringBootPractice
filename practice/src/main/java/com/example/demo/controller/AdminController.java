@@ -27,6 +27,7 @@ public class AdminController {
     public String contactDetail(Model model) {
         List<Contact> ContactDetail = contactService.getContactDetail();
         model.addAttribute("contactDetail", ContactDetail);
+        System.out.println(ContactDetail);
         return "contactDetail";
     }
 
