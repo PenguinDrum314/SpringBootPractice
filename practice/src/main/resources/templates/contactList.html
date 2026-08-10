@@ -41,7 +41,7 @@
 				<td th:text="${#temporals.format(contact.createdAt, 'yyyy/MM/dd HH:mm')}">作成日時</td>
 				<td th:text="${#temporals.format(contact.updatedAt, 'yyyy/MM/dd HH:mm')}">更新日時</td>
 				<td>
-					<a th:href="@{/admin/contact/:id(id=${contact.id})}">詳細</a>
+					<a th:href="@{/admin/contacts/{id}(id=${contact.id})}">詳細</a>
 				</td>
 			</tr>
 		</tbody>

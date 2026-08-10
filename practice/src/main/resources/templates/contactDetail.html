@@ -10,7 +10,7 @@
 	<h1>詳細画面</h1>
 	<table border="1">
 		<thead>
-			<tr th:action="@{/contact/admin/:id}"> 
+			<tr> 
 				<td th:text="${contact.id}">お問い合わせID</td>
 				<td th:text="${contact.lastName}">姓</td>
 				<td th:text="${contact.firstName}">名</td>
@@ -36,7 +36,7 @@
 			</tr>
 		</thead>
 	</table>
-	<a th:href="@{/contact/admin}">一覧画面へ戻る</a>
+	<a th:href="@{/contacts/admin}">一覧画面へ戻る</a>
 </body>
 
 </html>
