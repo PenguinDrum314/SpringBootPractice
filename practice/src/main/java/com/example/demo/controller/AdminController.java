@@ -14,22 +14,37 @@ import com.example.demo.service.ContactService;
 @Controller
 public class AdminController {
 
-    @Autowired
-    private ContactService contactService;
+	@Autowired
+	private ContactService contactService;
 
-    @GetMapping("/admin/contacts")
-    public String contactList(Model model) {
-        List<Contact> contactList = contactService.getContactList();
-        model.addAttribute("contactList", contactList);
-        return "contactList";
-    }
-    
-    @GetMapping("/admin/contacts/{id}")
-    public String contactDetail(@PathVariable Long id, Model model) {
-        model.addAttribute("contact", (contactService.getContactDetail(id)));
-        System.out.println(id);
-        System.out.println(contactService.getContactDetail(id));
-        return "contactDetail";
-    }
+	@GetMapping("/admin/contacts")
+	public String contactList(Model model) {
+		List<Contact> contactList = contactService.getContactList();
+		model.addAttribute("contactList", contactList);
+		return "contactList";
+	}
+
+	@GetMapping("/admin/contacts/{id}")
+	public String contactDetail(@PathVariable Long id, Model model) {
+		model.addAttribute("contact", (contactService.getContactDetail(id)));
+
+		return "contactDetail";
+	}
+
+	@GetMapping("/admin/contacts/{id}/edit")
+	public String contactEdit(@PathVariable Long id, Model model) {
+		model.addAttribute("contact", (contactService.getContactEdit(id)));
+
+		return "contactEdit";
+	}
+
+	@Transactional
+	public String getcontactEdit(Long id) {
+		// データベースから情報を取得
+		Optional<Contact> contactEdit = contactRepository.findById(id);
+		Contact entity = contactEdit.get();
+
+		return form;
+	}
 
 }
