@@ -5,10 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Contact;
+import com.example.demo.form.ContactForm;
 import com.example.demo.service.ContactService;
 
 @Controller
@@ -36,6 +41,18 @@ public class AdminController {
 		model.addAttribute("contact", (contactService.getContactEdit(id)));
 
 		return "contactEdit";
+	}
+	
+	@PostMapping("/admin/contacts/{id}/edit")
+	public String contact(@Validated @ModelAttribute("contact") ContactForm contactForm, BindingResult errorResult,
+			Model model) {
+
+		if (errorResult.hasErrors()) {
+			return "contactEdit";
+		}
+
+
+		return "admin/contacts";
 	}
 
 }

@@ -10,7 +10,7 @@
 	<h1>編集フォーム</h1>
 	<a th:href="@{/admin/contacts}">一覧画面へ戻る</a>
 
-	<form th:action="@{admin/contacts/{id}/edit}" th:object="${contact}" method="post">
+	<form th:action="@{/admin/contacts/{id}/edit(id=${contact.id})}" th:object="${contact}" method="post">
 		<table border="1">
 			<tr>
 				<td>性</td>

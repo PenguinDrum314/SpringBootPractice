@@ -3,6 +3,9 @@ package com.example.demo.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
+import jakarta.transaction.Transactional;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +53,26 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public @Nullable Contact getContactEdit(long id) {
 		return contactRepository.findById(id).orElse(null);
+	}
+	
+	@Transactional
+	public  Contact getContctEdit(long id) {
+        // データベースから情報を取得
+		Optional<Contact> contactOpt = contactRepository.findById(id);
+		Contact entity = contactOpt.get();
+
+        // CompanyFormオブジェクトを作成してプロパティを設定
+		Contact contact = new Contact();
+        contact.setLastName(entity.getLastName());
+        contact.setFirstName(entity.getFirstName());
+        contact.setEmail(entity.getEmail());
+        contact.setPhone(entity.getPhone());
+        contact.setZipCode(entity.getZipCode());
+        contact.setAddress(entity.getAddress());
+        contact.setBuildingName(entity.getBuildingName());
+        contact.setContactType(entity.getContactType());
+        contact.setBody(entity.getBody());
+		return contact;
 	}
 	
 }
