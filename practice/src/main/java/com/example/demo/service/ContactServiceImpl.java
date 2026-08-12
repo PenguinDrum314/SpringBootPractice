@@ -43,8 +43,8 @@ public class ContactServiceImpl implements ContactService {
     }
 
 	@Override
-	public @Nullable Object getContactDetail(long id) {
+	public @Nullable Contact getContactDetail(long id) {
 		
-		return contactRepository.findById(id);
+		return contactRepository.findById(id).orElse(null);
 	}
 }

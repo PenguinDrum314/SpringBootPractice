@@ -26,10 +26,10 @@ public class AdminController {
     
     @GetMapping("/admin/contacts/{id}")
     public String contactDetail(@PathVariable Long id, Model model) {
-        model.addAttribute("contact", contactService.getContactDetail(id));
+        model.addAttribute("contact", (contactService.getContactDetail(id)));
         System.out.println(id);
         System.out.println(contactService.getContactDetail(id));
-        return "contact";
+        return "contactDetail";
     }
 
 }
