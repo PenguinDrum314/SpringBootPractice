@@ -12,5 +12,7 @@ public interface ContactService {
 	List<Contact> getContactList();
 	@Nullable
 	Object getContactDetail(long id);
+	@Nullable
+	Object getContactEdit(long id);
 
 }

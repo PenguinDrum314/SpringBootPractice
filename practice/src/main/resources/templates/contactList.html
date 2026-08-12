@@ -42,7 +42,7 @@
 				<td th:text="${#temporals.format(contact.updatedAt, 'yyyy/MM/dd HH:mm')}">更新日時</td>
 				<td>
 					<a th:href="@{/admin/contacts/{id}(id=${contact.id})}">詳細</a>
-					<a th:href="@{/admin/contacts/{id}(id=${contact.id})}">編集</a>
+					<a th:href="@{/admin/contacts/{id}/edit(id=${contact.id})}">編集</a>
 				</td>
 			</tr>
 		</tbody>

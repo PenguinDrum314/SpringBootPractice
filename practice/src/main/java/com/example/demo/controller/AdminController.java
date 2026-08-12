@@ -38,13 +38,4 @@ public class AdminController {
 		return "contactEdit";
 	}
 
-	@Transactional
-	public String getcontactEdit(Long id) {
-		// データベースから情報を取得
-		Optional<Contact> contactEdit = contactRepository.findById(id);
-		Contact entity = contactEdit.get();
-
-		return form;
-	}
-
 }
