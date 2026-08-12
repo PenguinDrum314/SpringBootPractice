@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>編集画面</title>
+</head>
+
+<body>
+	<h1>編集フォーム</h1>
+	<a th:href="@{/admin/contacts}">一覧画面へ戻る</a>
+
+	<form th:action="@{/admin/contacts}" th:object="${contact}" method="post">
+		<table>
+		</table>
+	</form>
+
+</body>
+
+</html>
