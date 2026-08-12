@@ -10,15 +10,32 @@
 	<h1>詳細画面</h1>
 	<table border="1">
 		<thead>
-			<tr> 
+			<tr>
+				<td>お問い合わせID</td>
+				<td>姓</td>
+				<td>名</td>
+				<td>メールアドレス</td>
+				<td>電話番号</td>
+				<td>郵便番号</td>
+				<td>住所</td>
+				<td>建物名</td>
+				<td>お問い合わせ種別</td>
+				<td>お問い合わせ内容</td>
+				<td>作成日時</td>
+				<td>更新日時</td>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
 				<td th:text="${contact.id}">お問い合わせID</td>
 				<td th:text="${contact.lastName}">姓</td>
 				<td th:text="${contact.firstName}">名</td>
-				<td th:text="${contact.Email}">メールアドレス</td>
-				<td th:text="${contact.Phone}">電話番号</td>
-				<td th:text="${contact.ZipCode}">郵便番号</td>
-				<td th:text="${contact.Address}">住所</td>
-				<td th:text="${contact.BuildingName}">建物名</td>
+				<td th:text="${contact.email}">メールアドレス</td>
+				<td th:text="${contact.phone}">電話番号</td>
+				<td th:text="${contact.zipCode}">郵便番号</td>
+				<td th:text="${contact.address}">住所</td>
+				<td th:text="${contact.buildingName}">建物名</td>
 				<td>
 					<span th:if="${contact.contactType == 'services'}">
 						サービスに関するお問い合わせ
@@ -30,13 +47,13 @@
 						その他
 					</span>
 				</td>
-				<td th:text="${contact.Body}">お問い合わせ内容</td>
+				<td th:text="${contact.body}">お問い合わせ内容</td>
 				<td th:text="${#temporals.format(contact.createdAt, 'yyyy/MM/dd HH:mm')}">作成日時</td>
 				<td th:text="${#temporals.format(contact.updatedAt, 'yyyy/MM/dd HH:mm')}">更新日時</td>
 			</tr>
-		</thead>
+		</tbody>
 	</table>
-	<a th:href="@{/contacts/admin}">一覧画面へ戻る</a>
+	<a th:href="@{/admin/contacts}">一覧画面へ戻る</a>
 </body>
 
 </html>

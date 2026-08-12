@@ -45,6 +45,6 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public @Nullable Object getContactDetail(long id) {
 		
-		return contactRepository.findAll();
+		return contactRepository.findById(id);
 	}
 }
