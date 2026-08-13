@@ -59,20 +59,9 @@ public class ContactServiceImpl implements ContactService {
 	public  Contact getContctEdit(long id) {
         // データベースから情報を取得
 		Optional<Contact> contactOpt = contactRepository.findById(id);
-		Contact entity = contactOpt.get();
+		Contact contact = contactOpt.get();
 
-        // CompanyFormオブジェクトを作成してプロパティを設定
-		Contact contact = new Contact();
-        contact.setLastName(entity.getLastName());
-        contact.setFirstName(entity.getFirstName());
-        contact.setEmail(entity.getEmail());
-        contact.setPhone(entity.getPhone());
-        contact.setZipCode(entity.getZipCode());
-        contact.setAddress(entity.getAddress());
-        contact.setBuildingName(entity.getBuildingName());
-        contact.setContactType(entity.getContactType());
-        contact.setBody(entity.getBody());
-		return contact;
+		return contactRepository.findById(id).orElse(null);
 	}
 	
 }

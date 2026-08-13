@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
@@ -43,7 +43,7 @@ public class AdminController {
 		return "contactEdit";
 	}
 	
-	@PostMapping("/admin/contacts/{id}/edit")
+	@PutMapping("/admin/contacts/{id}/edit")
 	public String contact(@Validated @ModelAttribute("contact") ContactForm contactForm, BindingResult errorResult,
 			Model model) {
 
@@ -51,8 +51,8 @@ public class AdminController {
 			return "contactEdit";
 		}
 
-
-		return "admin/contacts";
+		 contactService.updateContact(id, contactForm);
+		return "redirect:/admin/contacts";
 	}
 
 }
