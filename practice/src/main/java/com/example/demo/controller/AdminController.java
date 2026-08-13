@@ -30,21 +30,21 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/contacts/{id}")
-	public String contactDetail(@PathVariable Long id, Model model) {
+	public String contactDetail(@PathVariable long id, Model model) {
 		model.addAttribute("contact", (contactService.getContactDetail(id)));
 
 		return "contactDetail";
 	}
 
 	@GetMapping("/admin/contacts/{id}/edit")
-	public String contactEdit(@PathVariable Long id, Model model) {
+	public String contactEdit(@PathVariable long id, Model model) {
 		model.addAttribute("contact", (contactService.getContactEdit(id)));
 
 		return "contactEdit";
 	}
 	
 	@PutMapping("/admin/contacts/{id}/edit")
-	public String contact(@Validated @ModelAttribute("contact") @PathVariable Long id, ContactForm contactForm, BindingResult errorResult,
+	public String contact(@Validated @ModelAttribute("contact") @PathVariable long id, ContactForm contactForm, BindingResult errorResult,
 			Model model) {
 
 		if (errorResult.hasErrors()) {
