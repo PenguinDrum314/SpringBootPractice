@@ -15,6 +15,5 @@ public interface ContactService {
 	@Nullable
 	Object getContactEdit(long id);
 	void updateContact(long id, ContactForm contactForm);
-	@Nullable
-	Object getContactDelete(long id);
+	void deleteContact(long id);
 }

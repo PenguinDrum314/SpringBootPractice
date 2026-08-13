@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
@@ -30,7 +30,7 @@ public class AdminController {
 		return "contactList";
 	}
 
-	@GetMapping("/admin/contacts/{id}")
+	@DeleteMapping("/admin/contacts/{id}")
 	public String contactDetail(@PathVariable long id, Model model) {
 		model.addAttribute("contact", (contactService.getContactDetail(id)));
 
@@ -43,26 +43,27 @@ public class AdminController {
 
 		return "contactEdit";
 	}
-	
+
 	@PutMapping("/admin/contacts/{id}/edit")
-	public String contact(@Validated @ModelAttribute("contact") @PathVariable long id, ContactForm contactForm, BindingResult errorResult,
+	public String contact(@Validated @ModelAttribute("contact") @PathVariable long id, ContactForm contactForm,
+			BindingResult errorResult,
 			Model model) {
 
 		if (errorResult.hasErrors()) {
 			return "contactEdit";
 		}
 
-		 contactService.updateContact(id, contactForm);
+		contactService.updateContact(id, contactForm);
 		return "redirect:/admin/contacts";
 	}
 	
-
 	@GetMapping("/admin/contacts/{id}/delete")
-	public String contact(@RequestParam long id, ContactForm contactForm) {
-		//画面から渡されたIDと同じレコードを削除する
-		Contact.deleteById(contactForm.getContactDelete(id));
-		
+	public String contactDelete(@PathVariable long id) {
+		contactService.deleteContact(id);
+		System.out.println(id);
+
 		return "redirect:/admin/contacts";
 	}
-	
+
+
 }
