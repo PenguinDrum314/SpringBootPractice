@@ -14,9 +14,5 @@ public interface ContactService {
 	Object getContactDetail(long id);
 	@Nullable
 	Object getContactEdit(long id);
-	static void updateContact(String string) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
-
+	void updateContact(Long id, ContactForm contactForm);
 }
