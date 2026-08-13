@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
@@ -44,7 +45,7 @@ public class AdminController {
 	}
 	
 	@PutMapping("/admin/contacts/{id}/edit")
-	public String contact(@Validated @ModelAttribute("contact") @PathVariable("id") long id, ContactForm contactForm, BindingResult errorResult,
+	public String contact(@Validated @ModelAttribute("contact") @PathVariable long id, ContactForm contactForm, BindingResult errorResult,
 			Model model) {
 
 		if (errorResult.hasErrors()) {
@@ -54,5 +55,14 @@ public class AdminController {
 		 contactService.updateContact(id, contactForm);
 		return "redirect:/admin/contacts";
 	}
+	
 
+	@GetMapping("/admin/contacts/{id}/delete")
+	public String contact(@RequestParam long id, ContactForm contactForm) {
+		//画面から渡されたIDと同じレコードを削除する
+		Contact.deleteById(contactForm.getContactDelete(id));
+		
+		return "redirect:/admin/contacts";
+	}
+	
 }

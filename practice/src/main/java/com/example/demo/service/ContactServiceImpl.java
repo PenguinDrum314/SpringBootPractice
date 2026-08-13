@@ -78,7 +78,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 	
 	@Transactional
-	public void deleteContact(long id) {
+	public void getContactDelete(long id) {
 		contactRepository.findById(id).orElse(null);
 		contactRepository.deleteById(id);
 	}
