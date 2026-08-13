@@ -30,7 +30,7 @@ public class AdminController {
 		return "contactList";
 	}
 
-	@DeleteMapping("/admin/contacts/{id}")
+	@GetMapping("/admin/contacts/{id}")
 	public String contactDetail(@PathVariable long id, Model model) {
 		model.addAttribute("contact", (contactService.getContactDetail(id)));
 
@@ -57,7 +57,7 @@ public class AdminController {
 		return "redirect:/admin/contacts";
 	}
 	
-	@GetMapping("/admin/contacts/{id}/delete")
+	@DeleteMapping("/admin/contacts/{id}/delete")
 	public String contactDelete(@PathVariable long id) {
 		contactService.deleteContact(id);
 		System.out.println(id);
