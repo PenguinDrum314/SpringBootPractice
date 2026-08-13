@@ -44,7 +44,7 @@ public class AdminController {
 	}
 	
 	@PutMapping("/admin/contacts/{id}/edit")
-	public String contact(@Validated @ModelAttribute("contact") @PathVariable long id, ContactForm contactForm, BindingResult errorResult,
+	public String contact(@Validated @ModelAttribute("contact") @PathVariable("id") long id, ContactForm contactForm, BindingResult errorResult,
 			Model model) {
 
 		if (errorResult.hasErrors()) {
