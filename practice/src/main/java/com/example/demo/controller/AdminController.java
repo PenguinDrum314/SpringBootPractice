@@ -26,6 +26,7 @@ public class AdminController {
 	@GetMapping("/admin/contacts")
 	public String contactList(Model model) {
 		List<Contact> contactList = contactService.getContactList();
+		//		addAttribute HTMLで使えるようにModelへ入れる
 		model.addAttribute("contactList", contactList);
 		return "contactList";
 	}
@@ -45,6 +46,8 @@ public class AdminController {
 	}
 
 	@PutMapping("/admin/contacts/{id}/edit")
+	//	@Validated ContactFormに入った値をチェック @ModelAttribute HTMLフォームから送られてきた入力内容を ContactForm に入れる 
+	//	@PathVariable URLの {id} を id という変数で受け取る
 	public String contact(@Validated @ModelAttribute("contact") @PathVariable long id, ContactForm contactForm,
 			BindingResult errorResult,
 			Model model) {
@@ -56,14 +59,12 @@ public class AdminController {
 		contactService.updateContact(id, contactForm);
 		return "redirect:/admin/contacts";
 	}
-	
+
 	@DeleteMapping("/admin/contacts/{id}/delete")
 	public String contactDelete(@PathVariable long id) {
 		contactService.deleteContact(id);
-		System.out.println(id);
 
 		return "redirect:/admin/contacts";
 	}
-
 
 }

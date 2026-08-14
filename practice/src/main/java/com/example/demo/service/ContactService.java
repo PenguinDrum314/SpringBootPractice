@@ -9,11 +9,16 @@ import com.example.demo.form.ContactForm;
 
 public interface ContactService {
 	void saveContact(ContactForm contactForm);
+
 	List<Contact> getContactList();
+
 	@Nullable
 	Object getContactDetail(long id);
+
 	@Nullable
 	Object getContactEdit(long id);
+
 	void updateContact(long id, ContactForm contactForm);
+
 	void deleteContact(long id);
 }
