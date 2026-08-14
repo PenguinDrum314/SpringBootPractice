@@ -66,5 +66,13 @@ public class AdminController {
 
 		return "redirect:/admin/contacts";
 	}
+	
+	@GetMapping("/admin/signup")
+	public String SignUp(Model model) {
+		
+		return "SingUp";
+	}
+	
+	
 
 }
