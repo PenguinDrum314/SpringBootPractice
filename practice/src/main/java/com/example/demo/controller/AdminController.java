@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.example.demo.entity.Contact;
-import com.example.demo.form.AdminForm;
 import com.example.demo.form.ContactForm;
-import com.example.demo.service.AdminService;
 import com.example.demo.service.ContactService;
 
 @Controller
@@ -72,14 +70,6 @@ public class AdminController {
 		return "redirect:/admin/contacts";
 	}
 	
-	@Autowired
-	private AdminService adminService;
-	
-	@GetMapping("/admin/signup")
-	public String SignUp(Model model) {
-		 model.addAttribute("adminForm", new AdminForm());
-		return "signup";
-	}
 	
 	
 
