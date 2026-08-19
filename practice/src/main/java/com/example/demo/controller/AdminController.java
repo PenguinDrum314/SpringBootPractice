@@ -25,13 +25,16 @@ public class AdminController {
 
 	@GetMapping("/admin/contacts")
 	public String contactList(Model model) {
+//		このListの中にはContact型のデータを入れる。ContactはContact.javaのpublic class Contactのこと
 		List<Contact> contactList = contactService.getContactList();
 		//		addAttribute HTMLで使えるようにModelへ入れる
 		model.addAttribute("contactList", contactList);
 		return "contactList";
 	}
 
+	// URLのidを受け取り、該当するお問い合わせを取得して詳細画面に渡す
 	@GetMapping("/admin/contacts/{id}")
+//	 @PathVariable で id = 値 を受け取る
 	public String contactDetail(@PathVariable long id, Model model) {
 		model.addAttribute("contact", (contactService.getContactDetail(id)));
 
@@ -66,5 +69,8 @@ public class AdminController {
 
 		return "redirect:/admin/contacts";
 	}
+	
+	
+	
 
 }
