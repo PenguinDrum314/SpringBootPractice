@@ -6,8 +6,21 @@ import org.springframework.context.annotation.Configuration;
 @Configuration // このクラスは設定クラスであることを示します
 public class SecurityConfig {
 	@Bean
-	public PasswordEncoder passwordEncoder() { // パスワードエンコーダー（パスワードのハッシュ化）を提供するメソッド
-		return new BCryptPasswordEncoder(); // パスワードをBCrypt方式でハッシュ化するエンコーダーを返します
+	SecurityFilterChain securityFilterChain(HttpSecurity http) {
+		// @formatter:off
+		http
+			.authorizeHttpRequests((requests) -> requests
+//					NOTE:「ログインしていなくてもアクセスできるURL」の指定
+				.requestMatchers("/signin", "/register").permitAll()
+				.anyRequest().authenticated()
+			)
+			.formLogin((form) -> form
+				.loginPage("/login")
+				.permitAll()
+			)
+			.logout(LogoutConfigurer::permitAll);
+
+		return http.build();
 	}
 
 }
