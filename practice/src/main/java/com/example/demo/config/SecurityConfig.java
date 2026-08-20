@@ -31,6 +31,10 @@ public class SecurityConfig {
 						.loginPage("/admin/signin")
 						// NOTE: ログイン情報のPOST送信先を指定します
 						.loginProcessingUrl("/admin/signin")
+						// NOTE: ログインIDの入力欄のname属性をemailに指定します
+						.usernameParameter("email")
+						// NOTE: パスワード入力欄のname属性をpasswordに指定します
+						.passwordParameter("password")
 						// NOTE: ログイン画面へのアクセスを全員に許可します
 						.defaultSuccessUrl("/admin/contacts", true)
 						// NOTE: ログイン失敗後はログイン画面へ戻します
